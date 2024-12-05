@@ -37,6 +37,8 @@ cmake_policy(SET CMP0057 NEW)
 include(px4_list_make_absolute)
 
 set(msg_files
+	test_mavlink_tx.msg
+	test_mavlink_rx.msg
 	a01_test.msg
 	ActionRequest.msg
 	ActuatorArmed.msg

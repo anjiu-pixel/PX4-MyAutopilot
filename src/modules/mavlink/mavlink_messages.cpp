@@ -153,6 +153,7 @@
 # include "streams/SCALED_PRESSURE3.hpp"
 # include "streams/UAVIONIX_ADSB_OUT_CFG.hpp"
 # include "streams/UAVIONIX_ADSB_OUT_DYNAMIC.hpp"
+#include "streams/MAVLINK_TEST.hpp"
 #endif // !CONSTRAINED_FLASH
 
 // ensure PX4 rotation enum and MAV_SENSOR_ROTATION align
@@ -248,6 +249,11 @@ static_assert(MAV_SENSOR_ROTATION_CUSTOM == static_cast<MAV_SENSOR_ORIENTATION>(
 
 
 static const StreamListItem streams_list[] = {
+
+#if defined(MAVLINK_TEST_HPP)
+    create_stream_list_item<MavlinkStreamMavlinktest>(),
+#endif // MAVLINK_TEST_HPP
+
 #if defined(HEARTBEAT_HPP)
 	create_stream_list_item<MavlinkStreamHeartbeat>(),
 #endif // HEARTBEAT_HPP
